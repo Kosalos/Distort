@@ -13,9 +13,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var s2: UISlider!
     @IBOutlet var freezeSwitch: UISwitch!
     
-    @IBAction func freezeChanged(_ sender: UISwitch) {
-        mesh.freeze = sender.isOn
-    }
+    @IBAction func freezeChanged(_ sender: UISwitch) {  mesh.freeze = sender.isOn }
+    @IBAction func savePicButtonPressed(_ sender: UIButton) { mesh.savePic() }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         switch sender {
@@ -42,6 +41,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         renderer = newRenderer
         renderer.mtkView(metalView, drawableSizeWillChange: metalView.drawableSize)
         metalView.delegate = renderer
+        metalView.framebufferOnly = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,6 +101,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         default : break
         }
     }
-    
+   
     override var prefersStatusBarHidden: Bool { return true }
 }
