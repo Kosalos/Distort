@@ -8,4 +8,6 @@ struct TVertex {
 
 struct ConstantData {
     matrix_float4x4 mvp;
+    int effectsEnabled;
+    float bright,contrast,saturation,posterize;
 };

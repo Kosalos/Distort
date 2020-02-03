@@ -136,7 +136,12 @@ class Renderer: NSObject, MTKViewDelegate {
         // -----------------------------
         let cb = constants[constantsIndex].contents().assumingMemoryBound(to: ConstantData.self)
         cb[0].mvp = projectionMatrix * translate(translationAmount)
-        
+        cb[0].effectsEnabled = vc.effectsSwitch.isOn ? 1 : 0
+        cb[0].bright = vc.bright
+        cb[0].contrast = vc.contrast
+        cb[0].saturation = vc.saturation
+        cb[0].posterize = vc.posterize
+
         renderEncoder?.setVertexBuffer(constants[constantsIndex], offset:0, index: 1)
         
         // ----------------------------------------------
