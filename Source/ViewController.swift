@@ -16,10 +16,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var mesh = Mesh()
     var timer = Timer()
     var renderer:Renderer!
-    var bright:Float = BRIGHT_MIN + (BRIGHT_MAX - BRIGHT_MIN) * 0.5
-    var contrast:Float = CONTRAST_MIN + (CONTRAST_MAX - CONTRAST_MIN) * 0.5
-    var saturation:Float = SATURATION_MIN + (SATURATION_MAX - SATURATION_MIN) * 0.5
-    var posterize:Float = POSTERIZE_MIN + (POSTERIZE_MAX - POSTERIZE_MIN) * 0.5
+    var bright = Float()
+    var contrast = Float()
+    var saturation = Float()
+    var posterize = Float()
     
     @IBOutlet var metalView: MTKView!
     @IBOutlet var s1: UISlider!
@@ -92,8 +92,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func resetWidgets() {
         s1.value = 0.5
         s2.value = 0.5
+        s3.value = 1
+        s4.value = 0.24696
+        s5.value = 0.75911
+        s6.value = 0
         freezeSwitch.isOn = false
         effectsSwitch.isOn = false
+
+        let sliderList = [ s1,s2,s3,s4,s5,s6 ]
+        for s in sliderList { sliderChanged(s!) }
     }
     
     //MARK: -
